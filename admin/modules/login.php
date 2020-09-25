@@ -5,7 +5,7 @@
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
+            <p class="login-box-msg">Đăng nhập để bắt đầu phiên làm việc</p>
             <div class='mess text-center red' style='color:red;'></div>
             <form action="#" method="post">
                 <div class="input-group mb-3">
@@ -25,15 +25,15 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-7">
                         <div class="icheck-primary">
                             <input type="checkbox" id="remember">
-                            <label for="remember"> Remember Me </label>
+                            <label for="remember"> Ghi nhớ đăng nhập </label>
                         </div>
                     </div>
                     <!-- /.col -->
-                    <div class="col-4">
-                        <button type="button" id='btn_login' class="btn btn-primary btn-block">Sign In</button>
+                    <div class="col-5">
+                        <button type="button" id='btn_login' class="btn btn-primary btn-block">Đăng nhập</button>
                     </div>
                     <!-- /.col -->
                 </div>

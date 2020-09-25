@@ -55,8 +55,8 @@ define('SMTP_USER','hoangtucoc321@gmail.com');
 define('SMTP_PASS','nsn2651984');
 define('SMTP_MAIL','hoangtucoc321@gmail.com');
 
-define('SITE_NAME','Chu Nhat Vang');
-define('SITE_TITLE','Chu Nhat Vang');
+define('SITE_NAME','New Home');
+define('SITE_TITLE','New Home');
 define('SITE_DESC','');
 define('SITE_KEY','');
 define('SITE_IMAGE','');
@@ -120,5 +120,75 @@ $_MODULE_TYPES = array(
 );
 define('MODULE_TYPES', $_MODULE_TYPES);
 
-
+$_POSITIONS = array(
+	'1'	=> 'header',
+	'2'	=> 'navitor',
+	'3'	=> 'footer',
+	'4'	=> 'top',
+	'5'	=> 'bottom',
+	'6'	=> 'path',
+	'7'	=> 'left',
+	'8' => 'right',
+	'9' => 'box1',
+	'10' => 'box2',
+	'11' => 'box3',
+	'12' => 'box4',
+	'13' => 'box5',
+	'14' => 'box6',
+	'15' => 'box7',
+	'16' => 'box8',
+	'17' => 'box9',
+	'18' => 'box10',
+	'19' => 'box11',
+	'20' => 'box12',
+	'21' => 'box13',
+	'22' => 'box14',
+	'23' => 'box15',
+	'24' => 'box16',
+	'25' => 'box17',
+	'26' => 'box18',
+	'27' => 'box19',
+	'28' => 'box20',
+	'29' => 'user1',
+	'30' => 'user2',
+	'31' => 'user3',
+	'32' => 'user4',
+	'33' => 'user5',
+	'34' => 'user6',
+	'35' => 'user7',
+	'36' => 'user8',
+	'37' => 'user9',
+	'38' => 'user10',
+	'39' => 'banner1',
+	'40' => 'banner2',
+	'41' => 'banner3',
+	'42' => 'banner4',
+	'43' => 'banner5',
+	'44' => 'banner6',
+	'45' => 'banner7',
+	'46' => 'banner8',
+	'47' => 'banner9',
+	'48' => 'banner10',
+	'49' => 'ads1',
+	'50' => 'ads2',
+	'51' => 'ads3',
+	'52' => 'ads4',
+	'53' => 'ads5',
+	'54' => 'ads6',
+	'55' => 'ads7',
+	'56' => 'ads8',
+	'57' => 'ads9',
+	'58' => 'ads10',
+	'59' => 'ads11',
+	'60' => 'ads12',
+	'61' => 'ads13',
+	'62' => 'ads14',
+	'63' => 'ads15',
+	'64' => 'ads16',
+	'65' => 'ads17',
+	'66' => 'ads18',
+	'67' => 'ads19',
+	'68' => 'ads20',
+);
+define('POSITIONS', $_POSITIONS);
 ?>

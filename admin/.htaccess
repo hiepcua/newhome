@@ -49,19 +49,6 @@ RewriteRule ^categories/edit/([0-9]+)?$ 	index.php?com=categories&viewtype=edit&
 RewriteRule ^categories/active/([0-9]+)?$ 	index.php?com=categories&viewtype=active&id=$1 [QSA]
 RewriteRule ^categories/delete/([0-9]+)?$ 	index.php?com=categories&viewtype=delete&id=$1 [QSA]
 
-RewriteRule ^video/?$ 					index.php?com=video [QSA]
-RewriteRule ^video/add/?$ 				index.php?com=video&viewtype=add 
-RewriteRule ^video/edit/([0-9]+)?$ 		index.php?com=video&viewtype=edit&id=$1 [QSA]
-RewriteRule ^video/active/([0-9]+)?$ 	index.php?com=video&viewtype=active&id=$1 [QSA]
-RewriteRule ^video/delete/([0-9]+)?$ 	index.php?com=video&viewtype=delete&id=$1 [QSA]
-
-RewriteRule ^content_type/?$ 					index.php?com=content_type [QSA]
-RewriteRule ^content_type/add/?$ 				index.php?com=content_type&viewtype=add
-RewriteRule ^content_type/edit/([0-9]+)?$ 		index.php?com=content_type&viewtype=edit&id=$1 [QSA]
-RewriteRule ^content_type/active/([0-9]+)?$ 	index.php?com=content_type&viewtype=active&id=$1 [QSA]
-RewriteRule ^content_type/ishot/([0-9]+)?$ 		index.php?com=content_type&viewtype=ishot&id=$1 [QSA]
-RewriteRule ^content_type/delete/([0-9]+)?$ 	index.php?com=content_type&viewtype=delete&id=$1 [QSA]
-
 RewriteRule ^album/?$ 						index.php?com=album [QSA]
 RewriteRule ^album/add/?$ 					index.php?com=album&viewtype=add
 RewriteRule ^album/edit/([0-9]+)?$ 			index.php?com=album&viewtype=edit&id=$1 [QSA]
@@ -90,21 +77,6 @@ RewriteRule ^slider/add?$ 							index.php?com=slider&task=add
 RewriteRule ^slider/edit/([0-9]+)?$ 				index.php?com=slider&task=edit&id=$1
 RewriteRule ^slider/delete/([0-9]+)?$ 				index.php?com=slider&task=delete&id=$1
 RewriteRule ^slider/active/([0-9]+)?$ 				index.php?com=slider&task=active&id=$1
-
-#Even
-RewriteRule ^event/?$ 					index.php?com=event [QSA]
-RewriteRule ^event/add/?$ 				index.php?com=event&viewtype=add 
-RewriteRule ^event/edit/([0-9]+)?$ 		index.php?com=event&viewtype=edit&id=$1 [QSA]
-RewriteRule ^event/active/([0-9]+)?$ 	index.php?com=event&viewtype=active&id=$1 [QSA]
-RewriteRule ^event/ishot/([0-9]+)?$ 	index.php?com=event&viewtype=ishot&id=$1 [QSA]
-RewriteRule ^event/delete/([0-9]+)?$ 	index.php?com=event&viewtype=delete&id=$1 [QSA]
-
-RewriteRule ^event_group/?$ 					index.php?com=event_group [QSA]
-RewriteRule ^event_group/add/?$ 				index.php?com=event_group&viewtype=add 
-RewriteRule ^event_group/edit/([0-9]+)?$ 		index.php?com=event_group&viewtype=edit&id=$1 [QSA]
-RewriteRule ^event_group/active/([0-9]+)?$ 		index.php?com=event_group&viewtype=active&id=$1 [QSA]
-RewriteRule ^event_group/delete/([0-9]+)?$ 		index.php?com=event_group&viewtype=delete&id=$1 [QSA]
-
 
 php_flag display_errors  on
 php_value upload_max_filesize 1024M

@@ -61,27 +61,11 @@ if($isAdmin==1){
 						</a>
 					</li>
 				<?php } ?>
-
-				<?php if($isadmin=1){ ?>
-					<li class="nav-item">
-						<a href="<?php echo ROOTHOST;?>content/chu-nhat-vang" class="nav-link <?php activeMenu('content','chu_nhat_vang','viewtype');?>">
-							<i class="far fa-circle nav-icon"></i>
-							<p>Tin chủ nhật vàng <span class="badge badge-info right"><?php echo $n_content6;?></span></p>
-						</a>
-					</li>
-				<?php } ?>
 			</ul>
 		</li>
 
-		<li class="nav-item menu-open">
-			<a href="<?php echo ROOTHOST;?>event" class="nav-link <?php activeMenu('event', '', 'com');?>">
-				<i class="nav-icon fa fa-calendar-alt"></i>
-				<p>Sự kiện</p>
-			</a>
-		</li>
-
 		<?php if($isAdmin){ ?>
-			<li class="nav-item menu-open <?php menuOpen(array('setting', 'categories', 'site', 'user', 'groupuser', 'mnuitem', 'seo', 'module', 'event_group'), 'com'); ?>">
+			<li class="nav-item menu-open <?php menuOpen(array('setting', 'categories', 'user', 'groupuser', 'mnuitem', 'seo', 'module'), 'com'); ?>">
 				<a href="<?php echo ROOTHOST;?>setting" class="nav-link <?php activeMenus(array('setting', 'categories', 'user', 'event_group'), 'com'); ?>">
 					<i class="nav-icon fas fa-wrench" aria-hidden="true"></i>
 					<p>Cấu hình<i class="right fas fa-angle-left"></i></p>
@@ -94,17 +78,11 @@ if($isAdmin==1){
 							<p>Quản lý SEO</p>
 						</a>
 					</li>
+
 					<li class="nav-item">
 						<a href="<?php echo ROOTHOST;?>categories" class="nav-link <?php activeMenu('categories', '', 'com');?> ">
 							<i class="nav-icon fa fa-server" aria-hidden="true"></i>
 							<p>Chuyên mục bài viết</p>
-						</a>
-					</li>
-
-					<li class="nav-item">
-						<a href="<?php echo ROOTHOST;?>event_group" class="nav-link <?php activeMenu('event_group', '', 'com');?> ">
-							<i class="nav-icon fa fa-server" aria-hidden="true"></i>
-							<p>Nhóm sự kiện</p>
 						</a>
 					</li>
 
@@ -142,13 +120,6 @@ if($isAdmin==1){
 					</li>
 
 					<li class="nav-item">
-						<a href="<?php echo ROOTHOST;?>setting" class="nav-link <?php activeMenu('setting', '', 'com');?>">
-							<i class="nav-icon fas fa-wrench" aria-hidden="true"></i>
-							<p>Cấu hình website</p>
-						</a>
-					</li>
-
-					<!-- <li class="nav-item">
 						<a href="<?php echo ROOTHOST;?>album" class="nav-link <?php activeMenu('album', '', 'com');?>">
 							<i class="nav-icon far fa-circle "></i>
 							<p>Album</p>
@@ -156,12 +127,13 @@ if($isAdmin==1){
 					</li>
 
 					<li class="nav-item">
-						<a href="<?php echo ROOTHOST;?>content_type" class="nav-link <?php activeMenu('content_type', '', 'com');?>">
-							<i class="nav-icon far fa-circle "></i>
-							<p>Kiểu bài viết</p>
+						<a href="<?php echo ROOTHOST;?>setting" class="nav-link <?php activeMenu('setting', '', 'com');?>">
+							<i class="nav-icon fas fa-wrench" aria-hidden="true"></i>
+							<p>Cấu hình website</p>
 						</a>
-					</li> -->
+					</li>
 
+					
 				</ul>
 			</li>
 		<?php } ?>
