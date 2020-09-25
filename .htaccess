@@ -1,0 +1,31 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^/?$ 							index.php [QSA]
+RewriteRule ^trang-chu/?$ 					index.php [QSA]
+RewriteRule ^tim-kiem/?$ 					index.php?com=search [QSA]
+
+# Event
+RewriteRule ^su-kien-([0-9a-zA-Z\-]+)-([0-9]+)/?$      	index.php?com=event&viewtype=detail&code=$1&id=$2 [QSA]
+RewriteRule ^su-kien-([0-9a-zA-Z\-]+)/?$            	index.php?com=event&viewtype=block&code=$1 [QSA]
+
+# Contents
+RewriteRule ^tin-tuc/?$ 							index.php?com=contents
+RewriteRule ^video/?$ 								index.php?com=contents&viewtype=video [QSA]
+RewriteRule ^([0-9a-zA-Z\-]+)-video-([0-9]+)/?$ 	index.php?com=contents&viewtype=detail_video&code=$1&id=$2 [QSA]
+RewriteRule ^([0-9a-zA-Z\-]+)/?$            		index.php?com=contents&viewtype=block&code=$1 [QSA]
+RewriteRule ^([0-9a-zA-Z\-]+)-([0-9]+).html/?$      index.php?com=contents&viewtype=detail&code=$1&id=$2 [QSA]
+
+
+php_flag display_errors  on
+php_value upload_max_filesize 1024M
+php_value post_max_size 1024M
+php_value max_input_time 300
+php_value max_execution_time 300
+
+#Bảo vệ file
+<files .htaccess>
+order allow,deny
+deny from all
+</files>
