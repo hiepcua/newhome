@@ -65,7 +65,7 @@ if($isAdmin==1){
 		</li>
 
 		<?php if($isAdmin){ ?>
-			<li class="nav-item menu-open <?php menuOpen(array('setting', 'categories', 'user', 'groupuser', 'mnuitem', 'seo', 'module'), 'com'); ?>">
+			<li class="nav-item menu-open <?php menuOpen(array('setting', 'categories', 'user', 'groupuser', 'mnuitem', 'seo', 'module', 'feedback', 'pages'), 'com'); ?>">
 				<a href="<?php echo ROOTHOST;?>setting" class="nav-link <?php activeMenus(array('setting', 'categories', 'user', 'event_group'), 'com'); ?>">
 					<i class="nav-icon fas fa-wrench" aria-hidden="true"></i>
 					<p>Cấu hình<i class="right fas fa-angle-left"></i></p>
@@ -83,6 +83,23 @@ if($isAdmin==1){
 						<a href="<?php echo ROOTHOST;?>categories" class="nav-link <?php activeMenu('categories', '', 'com');?> ">
 							<i class="nav-icon fa fa-server" aria-hidden="true"></i>
 							<p>Chuyên mục bài viết</p>
+						</a>
+					</li>
+
+					<li class="nav-item">
+						<a href="<?php echo ROOTHOST;?>pages" class="nav-link <?php activeMenu('pages', '', 'com');?> ">
+							<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-layout-text-sidebar-reverse nav-icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M2 1h12a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm12-1a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z"/>
+								<path fill-rule="evenodd" d="M5 15V1H4v14h1zm8-11.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5zm0 3a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5zm0 3a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5zm0 3a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5z"/>
+							</svg>
+							<p>Quản lý page tĩnh</p>
+						</a>
+					</li>
+
+					<li class="nav-item">
+						<a href="<?php echo ROOTHOST;?>feedback" class="nav-link <?php activeMenu('feedback');?>">
+							<i class="nav-icon fas fa-comment-dots"></i>
+							<p>Feedback</p>
 						</a>
 					</li>
 

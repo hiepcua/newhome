@@ -175,5 +175,4 @@ if(isset($_POST['cmdsave_tab1']) && $_POST['txt_name']!='') {
         }
         return true;
     }
-    
 </script>

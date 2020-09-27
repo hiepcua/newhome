@@ -6,17 +6,17 @@ function isSSL(){
 }
 $REQUEST_PROTOCOL = isSSL()? 'https://' : 'http://';
 // define('ROOTHOST',$REQUEST_PROTOCOL.$_SERVER['HTTP_HOST'].'/');
-define('ROOTHOST','http://localhost/chunhatvang/admin/');
-define('ROOTHOST_WEB','http://localhost/chunhatvang/');
+define('ROOTHOST','http://localhost/newhome/admin/');
+define('ROOTHOST_WEB','http://localhost/newhome/');
 define('ROOTHOST_ADMIN',$REQUEST_PROTOCOL.$_SERVER['HTTP_HOST'].'/admin/');
 define('WEBSITE',$REQUEST_PROTOCOL.$_SERVER['HTTP_HOST'].'/');
 define('DOMAIN','ott.ecohub.asia');
 define('ROOT_IMAGE','/home/admin/web/ecohub.asia/public_html/');
 define('ROOT_MEDIA','/home/admin/web/ecohub.asia/public_html/uploads/media/');
 define('BASEVIRTUAL0','/home/admin/web/ecohub.asia/public_html/uploads/');
-define('MEDIA_HOST',$_SERVER['DOCUMENT_ROOT'].'/chunhatvang/medias/');
+define('MEDIA_HOST',$_SERVER['DOCUMENT_ROOT'].'/newhome/medias/');
 define('IMAGE_HOST',ROOTHOST_WEB.'medias/');
-define('IMAGE_CONTENTS_HOST', $_SERVER['DOCUMENT_ROOT'].'/chunhatvang/medias/contents/');
+define('IMAGE_CONTENTS_HOST', $_SERVER['DOCUMENT_ROOT'].'/newhome/medias/contents/');
 define('AVATAR_DEFAULT',ROOTHOST.'global/img/avatars/male.png');
 define('IMAGE_DEFAULT',ROOTHOST.'global/img/no-photo.jpg');
 
@@ -114,8 +114,6 @@ $_MODULE_TYPES = array(
 	'html'			=> 'HTMl',
 	'category'		=> 'Nhóm bài viết',
 	'news'			=> 'Bài viết',
-	'slide'			=> 'Slideshow',
-	'video'			=> 'Tin Video',
 	'more'			=> 'Mở rộng'
 );
 define('MODULE_TYPES', $_MODULE_TYPES);

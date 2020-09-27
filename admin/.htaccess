@@ -38,6 +38,7 @@ RewriteRule ^user/add/?$ 						index.php?com=user&viewtype=add
 RewriteRule ^user/edit/?$ 						index.php?com=user&viewtype=edit [QSA]
 RewriteRule ^user/active/?$ 					index.php?com=user&viewtype=active [QSA]
 RewriteRule ^user/delete/?$ 					index.php?com=user&viewtype=delete [QSA]
+RewriteRule ^logout/?$ 							index.php?com=user&viewtype=logout [QSA]
 
 RewriteRule ^groupuser/?$ 				index.php?com=groupuser [QSA]
 RewriteRule ^groupuser/add/?$ 			index.php?com=groupuser&viewtype=add 
@@ -77,6 +78,20 @@ RewriteRule ^slider/add?$ 							index.php?com=slider&task=add
 RewriteRule ^slider/edit/([0-9]+)?$ 				index.php?com=slider&task=edit&id=$1
 RewriteRule ^slider/delete/([0-9]+)?$ 				index.php?com=slider&task=delete&id=$1
 RewriteRule ^slider/active/([0-9]+)?$ 				index.php?com=slider&task=active&id=$1
+
+RewriteRule ^feedback/?$ 					index.php?com=feedback [QSA]
+RewriteRule ^feedback/add/?$ 				index.php?com=feedback&viewtype=add [QSA]
+RewriteRule ^feedback/edit/([0-9]+)?$ 		index.php?com=feedback&viewtype=edit&id=$1 [QSA]
+RewriteRule ^feedback/active/([0-9]+)?$ 	index.php?com=feedback&viewtype=active&id=$1 [QSA]
+RewriteRule ^feedback/delete/([0-9]+)?$ 	index.php?com=feedback&viewtype=delete&id=$1 [QSA]
+
+# Page
+RewriteRule ^pages/?$ 							index.php?com=pages 	[QSA]
+RewriteRule ^pages/list?$ 						index.php?com=pages&task=list
+RewriteRule ^pages/add?$ 						index.php?com=pages&task=add
+RewriteRule ^pages/edit/([0-9]+)?$ 				index.php?com=pages&task=edit&id=$1
+RewriteRule ^pages/active/([0-9]+)?$ 			index.php?com=pages&task=active&id=$1
+RewriteRule ^pages/delete/([0-9]+)?$ 			index.php?com=pages&task=delete&id=$1
 
 php_flag display_errors  on
 php_value upload_max_filesize 1024M

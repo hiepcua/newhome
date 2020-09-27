@@ -180,7 +180,7 @@ if(isset($_POST["txt_viewtype"]))
 
 						<div class="col-sm-12">
 							<div class="form-group">
-								<label>Sapo:</label>
+								<label>Nội dung:</label>
 								<textarea name="txtdesc" id="txtdesc" cols="45" rows="5"></textarea>
 							</div>
 						</div>
@@ -234,21 +234,56 @@ if(isset($_POST["txt_viewtype"]))
 			return validForm();
 		});
 
-		$('#txtdesc').summernote({
-            placeholder: 'Mô tả ...',
-            height: 300,
-            toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'italic', 'underline', 'superscript', 'subscript', 'strikethrough', 'clear']],
-            ['fontname', ['fontname']],
-            ['fontsize', ['fontsize']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['height', ['height']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'video', 'hr']],
-            ['view', ['fullscreen', 'codeview', 'help']],
-            ],
+		tinymce.init({
+			selector: '#txtdesc',
+			height: 600,
+			plugins: [
+			'link image imagetools table lists autolink fullscreen media hr code'
+			],
+			image_title: true,
+			automatic_uploads: true,
+			toolbar: 'bold italic underline | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify |  numlist bullist | removeformat | insertfile image media link anchor codesample | outdent indent fullscreen',
+			contextmenu: 'link image imagetools table spellchecker lists',
+			content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+			image_caption: true,
+			images_reuse_filename: true,
+			images_upload_credentials: true,
+			relative_urls : false,
+			remove_script_host : false,
+			convert_urls : true,
+            
+            // override default upload handler to simulate successful upload
+            images_upload_handler: function (blobInfo, success, failure) {
+            	var xhr, formData;
+
+            	xhr = new XMLHttpRequest();
+            	xhr.withCredentials = false;
+            	xhr.open('POST', '<?php echo ROOTHOST;?>ajaxs/upload.php');
+
+            	xhr.onload = function() {
+            		console.log(xhr.responseText);
+            		var json;
+
+            		if (xhr.status != 200) {
+            			failure('HTTP Error: ' + xhr.status);
+            			return;
+            		}
+
+            		json = JSON.parse(xhr.responseText);
+
+            		if (!json || typeof json.location != 'string') {
+            			failure('Invalid JSON: ' + xhr.responseText);
+            			return;
+            		}
+
+            		success(json.location);
+            	};
+
+            	formData = new FormData();
+            	formData.append('file', blobInfo.blob(), blobInfo.filename());
+            	formData.append('folder', 'images/');
+            	xhr.send(formData);
+            },
         });
 	});
 

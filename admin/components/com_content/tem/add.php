@@ -21,7 +21,7 @@ if(isset($_POST['txt_name']) && $_POST['txt_name'] !== '') {
 	$Type 			= isset($_POST['cbo_type']) ? (int)$_POST['cbo_type'] : 0;
 	$Status 		= isset($_POST['txt_status']) ? (int)$_POST['txt_status'] : 0;
 	$Fulltext 		= isset($_POST['txt_fulltext']) ? addslashes($_POST['txt_fulltext']) : '';
-	$Youtube 		= isset($_POST['txt_link_youtube']) ? $_POST['txt_link_youtube'] : '';
+	// $Youtube 		= isset($_POST['txt_link_youtube']) ? $_POST['txt_link_youtube'] : '';
 
 	if(isset($_FILES['txt_thumb']) && $_FILES['txt_thumb']['size'] > 0){
 		$save_path 	= "../medias/contents/";
@@ -29,9 +29,9 @@ if(isset($_POST['txt_name']) && $_POST['txt_name'] !== '') {
 		$file = ROOTHOST_WEB.'medias/contents/'.$obj_upload->UploadFile("txt_thumb", $save_path);
 	}
 
-	if($Youtube != ''){
-		$Youtube = convertYoutube($Youtube);
-	}
+	// if($Youtube != ''){
+	// 	$Youtube = convertYoutube($Youtube);
+	// }
 
 	$arr=array();
 	$arr['title'] = $Title;
@@ -42,7 +42,7 @@ if(isset($_POST['txt_name']) && $_POST['txt_name'] !== '') {
 	$arr['images'] = $file;
 	$arr['status'] = $Status;
 	$arr['author'] = getInfo('username');
-	$arr['link_youtube'] = $Youtube;
+	// $arr['link_youtube'] = $Youtube;
 	$arr['pseudonym'] = getInfo('pseudonym');
 	$arr['cdate'] = time();
 
@@ -136,10 +136,10 @@ if(isset($_POST['txt_name']) && $_POST['txt_name'] !== '') {
 								</select>
 							</div>
 
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label>Link Youtube</label>
 								<input type="text" name="txt_link_youtube" class="form-control">
-							</div>
+							</div> -->
 
 							<div class='form-group'>
 								<div class="widget-fileupload fileupload fileupload-new" data-provides="fileupload">
@@ -192,7 +192,7 @@ if(isset($_POST['txt_name']) && $_POST['txt_name'] !== '') {
 			],
 			image_title: true,
 			automatic_uploads: true,
-			toolbar: 'bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify |  numlist bullist | removeformat | insertfile image media link anchor codesample | outdent indent',
+			toolbar: 'bold italic underline | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify |  numlist bullist | removeformat | insertfile image media link anchor codesample | outdent indent fullscreen',
 			contextmenu: 'link image imagetools table spellchecker lists',
 			content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
 			image_caption: true,

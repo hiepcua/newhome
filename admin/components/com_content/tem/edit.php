@@ -17,13 +17,13 @@ if($isAdmin) $strWhere.=' AND id='. $GetID;
 else $strWhere.=' AND `author`="'.$user.'" AND id='. $GetID;
 /*End check user permission*/
 
-function convertYoutube($string) {
-	return preg_replace(
-		"/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
-		"https://www.youtube.com/embed/$2",
-		$string
-	);
-}
+// function convertYoutube($string) {
+// 	return preg_replace(
+// 		"/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+// 		"https://www.youtube.com/embed/$2",
+// 		$string
+// 	);
+// }
 
 if(isset($_POST['txt_name']) && $_POST['txt_name']!=='') {
 	$Title 			= isset($_POST['txt_name']) ? addslashes($_POST['txt_name']) : '';
@@ -36,7 +36,7 @@ if(isset($_POST['txt_name']) && $_POST['txt_name']!=='') {
 	$Status 		= isset($_POST['txt_status']) ? (int)$_POST['txt_status'] : 0;
 	$Fulltext 		= isset($_POST['txt_fulltext']) ? addslashes($_POST['txt_fulltext']) : '';
 	$seo_link 		= isset($_POST['txt_seo_link']) ? addslashes($_POST['txt_seo_link']) : '';
-	$Youtube 		= isset($_POST['txt_link_youtube']) ? $_POST['txt_link_youtube'] : '';
+	// $Youtube 		= isset($_POST['txt_link_youtube']) ? $_POST['txt_link_youtube'] : '';
 
 	if(isset($_FILES['txt_thumb']) && $_FILES['txt_thumb']['size'] > 0){
 		$save_path 	= "../medias/contents/";
@@ -46,9 +46,9 @@ if(isset($_POST['txt_name']) && $_POST['txt_name']!=='') {
 		$file = $Images;
 	}
 
-	if($Youtube != ''){
-		$Youtube = convertYoutube($Youtube);
-	}
+	// if($Youtube != ''){
+	// 	$Youtube = convertYoutube($Youtube);
+	// }
 
 	$arr=array();
 	$arr['title'] = $Title;
@@ -59,7 +59,7 @@ if(isset($_POST['txt_name']) && $_POST['txt_name']!=='') {
 	$arr['images'] = $file;
 	$arr['mdate'] = time();
 	$arr['status'] = $Status;
-	$arr['link_youtube'] = $Youtube;
+	// $arr['link_youtube'] = $Youtube;
 
 	$result = SysEdit('tbl_content', $arr, " id=".$GetID);
 
@@ -206,7 +206,7 @@ if(count($res_seos)){
 								<textarea class="form-control" id="txt_sapo" name="txt_sapo" placeholder="Sapo..." rows="3"><?php echo $row['sapo']; ?></textarea>
 							</div>
 							
-							<div class="form-group" id="type_text" style="<?php if($_type==3) echo 'display: block;';?>">
+							<div class="form-group" id="type_text">
 								<label>Nội dung</label>
 								<textarea class="form-control" id="txt_fulltext" name="txt_fulltext" placeholder="Nội dung chính..." rows="5"><?php echo $row['fulltext']; ?></textarea>
 							</div>
@@ -226,10 +226,10 @@ if(count($res_seos)){
 								</script>
 							</div>
 
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label>Link Youtube</label>
-								<input type="text" name="txt_link_youtube" value="<?php echo $row['link_youtube'];?>" class="form-control">
-							</div>
+								<input type="text" name="txt_link_youtube" value="<?php // echo $row['link_youtube'];?>" class="form-control">
+							</div> -->
 
 							<div class='form-group'>
 								<div class="widget-fileupload fileupload fileupload-new" data-provides="fileupload">
@@ -293,7 +293,7 @@ if(count($res_seos)){
 			],
 			image_title: true,
 			automatic_uploads: true,
-			toolbar: 'bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify |  numlist bullist | removeformat | insertfile image media link anchor codesample | outdent indent',
+			toolbar: 'bold italic underline | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify |  numlist bullist | removeformat | insertfile image media link anchor codesample | outdent indent fullscreen',
 			contextmenu: 'link image imagetools table spellchecker lists',
 			content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
 			image_caption: true,

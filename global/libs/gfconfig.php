@@ -6,7 +6,7 @@ function isSSL(){
 }
 $REQUEST_PROTOCOL = isSSL()? 'https://' : 'http://';
 // define('ROOTHOST',$REQUEST_PROTOCOL.$_SERVER['HTTP_HOST'].'/');
-define('ROOTHOST','http://localhost/chunhatvang/');
+define('ROOTHOST','http://localhost/newhome/');
 define('ROOTHOST_ADMIN',$REQUEST_PROTOCOL.$_SERVER['HTTP_HOST'].'/admin/');
 define('WEBSITE',$REQUEST_PROTOCOL.$_SERVER['HTTP_HOST'].'/');
 define('DOMAIN','ott.ecohub.asia');

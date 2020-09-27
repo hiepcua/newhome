@@ -87,9 +87,9 @@ if(isset($_POST['cmdsave_tab1']) && $_POST['txttitle']!='') {
                         <label>Kiểu hiển thị<small class="cred"> (*)</small><span id="err1" class="mes-error"></span></label>
                         <select name="cbo_type" class="form-control" id="cbo_type" onchange="select_type();" style="width: 100%;">
                             <?php
-                            $res_modtypes = SysGetList('tbl_modtype', []);
+                            $res_modtypes = MODULE_TYPES;
                             foreach ($res_modtypes as $key => $value) {
-                                echo "<option value=".$value['code'].">".$value['name']."</option>";
+                                echo "<option value=".$key.">".$value."</option>";
                             }
                             ?>
                         </select>
@@ -218,9 +218,9 @@ if(isset($_POST['cmdsave_tab1']) && $_POST['txttitle']!='') {
                         <select class="form-control" name="cbo_position" id="cbo_position">
                             <option value="">-- Select position --</option>
                             <?php
-                            $res_positions = SysGetList('tbl_position', []);
+                            $res_positions = POSITIONS;
                             foreach ($res_positions as $key => $value) {
-                                echo '<option value="'.$value['name'].'">'.$value['name'].'</option>';
+                                echo '<option value="'.$value.'">'.$value.'</option>';
                             }
                             ?>
                         </select>

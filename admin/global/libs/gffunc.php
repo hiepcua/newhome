@@ -214,6 +214,7 @@ function LoadModBrow($mod_name){
 //-----------------------CSDL------------------------------
 function SysCount($table,$where){
 	$sql="SELECT COUNT(*) as num FROM $table WHERE 1=1 $where";
+	// echo $sql;
 	$obj=new CLS_MYSQL;
 	$obj->Query($sql);
 	$r=$obj->Fetch_Assoc();

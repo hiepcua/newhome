@@ -24,7 +24,10 @@ if(isset($_POST['web_title']) && $_POST['web_title']!='') {
 	$Facebook 		= isset($_POST['txtfacebook']) ? addslashes($_POST['txtfacebook']) : '';
 	$Youtube 		= isset($_POST['txtyoutube']) ? addslashes($_POST['txtyoutube']) : '';
 	$Work_time 		= isset($_POST['txt_work_time']) ? addslashes($_POST['txt_work_time']) : '';
-	$Notification	= isset($_POST['time_notification']) ? (int)$_POST['time_notification'] : '';
+	// $Notification	= isset($_POST['time_notification']) ? (int)$_POST['time_notification'] : '';
+	$Gg_analytic	= isset($_POST['gg_analytic']) ? htmlspecialchars($_POST['gg_analytic']) : '';
+	$Script_header	= isset($_POST['script_header']) ? htmlspecialchars($_POST['script_header']) : '';
+	$Script_footer	= isset($_POST['script_footer']) ? htmlspecialchars($_POST['script_footer']) : '';
 	$Images 		= isset($_POST['txt_thumb2']) ? addslashes($_POST['txt_thumb2']) : '';
 
 	if(isset($_FILES['txt_thumb']) && $_FILES['txt_thumb']['size'] > 0){
@@ -50,7 +53,10 @@ if(isset($_POST['web_title']) && $_POST['web_title']!='') {
 	$sql .="facebook='".$Facebook."',";
 	$sql .="youtube='".$Youtube."',";
 	$sql .="image='".$file."',";
-	$sql .="notification='".$Notification."',";
+	$sql .="gg_analytic='".$Gg_analytic."',";
+	$sql .="script_header='".$Script_header."',";
+	$sql .="script_footer='".$Script_footer."',";
+	// $sql .="notification='".$Notification."',";
 	$sql .="meta_descript='".$Meta_descript."' WHERE config_id=1";
 	$result = $objmysql->Query($sql);
 	if($result) $_SESSION['flash'.'com_'.COMS] = 1;
@@ -78,8 +84,11 @@ if($objmysql->Num_rows()<=0) {
 	$gplus          = stripslashes($row['gplus']);
 	$twitter        = stripslashes($row['twitter']);
 	$work_time      = stripslashes($row['work_time']);
-	$notification   = (int)$row['notification'];
+	// $notification   = (int)$row['notification'];
 	$image   		= stripslashes($row['image']);
+	$gg_analytic   	= json_decode(addslashes($row['gg_analytic']));
+	$script_header  = json_decode(addslashes($row['script_header']));
+	$script_footer  = json_decode(addslashes($row['script_footer']));
 }
 unset($objmysql);
 ?>
@@ -121,8 +130,9 @@ unset($objmysql);
 					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 						<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Website config</a>
 						<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Contact info</a>
-						<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Set time notify</a>
+						<!-- <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Set time notify</a> -->
 						<a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Social</a>
+						<a class="nav-link" id="v-pills-script-tab" data-toggle="pill" href="#v-pills-script" role="tab" aria-controls="v-pills-script" aria-selected="false">Mã script</a>
 					</div>
 				</div>
 				<div class="tab_column_container card">
@@ -251,7 +261,7 @@ unset($objmysql);
 								</div>
 							</div>
 
-							<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+							<!-- <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
 								<div>Set how many minutes before the meeting starts to automatically send emails, and notify users.</div><hr size="1" style="margin:10px 0 20px;">
 								<div class="row form-group">
 									<div class="col-md-6">
@@ -259,7 +269,7 @@ unset($objmysql);
 										<input type="number" min="0" name="time_notification" class="form-control" id="time_notification" value="<?php echo $notification;?>" placeholder="Số phút">
 									</div>
 								</div>
-							</div>
+							</div> -->
 
 							<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
 								<div>Social setting</div><hr size="1" style="margin:10px 0 20px;">
@@ -281,6 +291,27 @@ unset($objmysql);
 									<div class="col-md-6">
 										<label class="control-label">Youtube</label>
 										<input type="text" name="txtyoutube" class="form-control" id="txtyoutube" value="<?php echo $youtube;?>" placeholder="Youtube link">
+									</div>
+								</div>
+							</div>
+
+							<div class="tab-pane fade" id="v-pills-script" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+								<div class="form-group">
+									<div class="col-md-12">
+										<label class="control-label">Google Analytic</label>
+										<textarea name="gg_analytic" class="form-control" id="gg_analytic"><?php echo $gg_analytic;?></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-12">
+										<label class="control-label">Script Header</label>
+										<textarea name="script_header" class="form-control" id="script_header"><?php echo $script_header;?></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-12">
+										<label class="control-label">Script Footer</label>
+										<textarea name="script_footer" class="form-control" id="script_footer"><?php echo $script_footer;?></textarea>
 									</div>
 								</div>
 							</div>
