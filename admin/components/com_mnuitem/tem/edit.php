@@ -11,6 +11,7 @@ if(isset($_POST['cmdsave_tab1']) && (int)$_POST['txtid']!=0) {
 	$Cate_ID 	= '';
 	$Con_ID 	= '';
 	$Link 		= '';
+	$Page_ID 	= '';
 	$Mnu_ID 	= $get_mnuid;
 	$Code 		= addslashes(un_unicode($_POST['txtname']));
 	$Par_ID		= isset($_POST['cbo_parid']) ? (int)$_POST['cbo_parid'] : 0;
@@ -27,6 +28,9 @@ if(isset($_POST['cmdsave_tab1']) && (int)$_POST['txtid']!=0) {
 	else if($Viewtype == 'article'){		
 		$Con_ID = (int)$_POST['cbo_article'];
 	}
+	else if($Viewtype == 'page'){		
+		$Page_ID = (int)$_POST['cbo_page'];
+	}
 	else{
 		$Link = addslashes($_POST['txtlink']);
 	}
@@ -40,6 +44,7 @@ if(isset($_POST['cmdsave_tab1']) && (int)$_POST['txtid']!=0) {
 	$arr['viewtype'] = $Viewtype;
 	$arr['cate_id'] = $Cate_ID;
 	$arr['con_id'] = $Con_ID;
+	$arr['page_id'] = $Page_ID;
 	$arr['link'] = $Link;
 	$arr['icon'] = $Icon;
 	$arr['class'] = $Class;
@@ -157,7 +162,7 @@ if(count($res_children) >0){
 						</div>
 
 						<?php if($viewtype=="block"){?>
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<div class="form-group">
 									<label>Nhóm tin<small class="cred"> (*)</small><span id="err_cate" class="mes-error"></span></label>
 									<select name="cbo_cate" id="cbo_cate" class="form-control" style="width:100%;">
@@ -188,6 +193,27 @@ if(count($res_children) >0){
 										$(document).ready(function() {
 											cbo_Selected('cbo_article', <?php echo $row['con_id'];?>);
 											$("#cbo_article").select2();
+										});
+									</script>
+								</div>
+							</div>
+						<?php } else if($viewtype=="page"){?>
+							<div class="col-md-12">
+								<div class="form-group">
+									<label>Trang tĩnh<small class="cred"> (*)</small><span id="err_page" class="mes-error"></span></label>
+									<select name="cbo_page" id="cbo_page" class="form-control" style="width: 100%;">
+										<option value="0" title="N/A">Chọn một trang tĩnh</option>
+										<?php
+										$res_pages = SysGetList('tbl_page', [], 'AND isactive=1');
+										foreach ($res_pages as $key => $value) {
+											echo '<option value="'.$value['id'].'">'.$value['title'].'</option>';
+										}
+										?>
+									</select>
+									<script type="text/javascript">
+										$(document).ready(function() {
+											cbo_Selected('cbo_page', <?php echo $row['page_id'];?>);
+											$("#cbo_page").select2();
 										});
 									</script>
 								</div>
@@ -261,7 +287,7 @@ if(count($res_children) >0){
 
 		tinymce.init({
 			selector: '#txtdesc',
-			height: 600,
+			height: 300,
 			plugins: [
 			'link image imagetools table lists autolink fullscreen media hr code'
 			],

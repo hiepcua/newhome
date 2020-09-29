@@ -54,7 +54,7 @@ if($isAdmin){
 				echo "<option value='$id'>$char $title</option>";
 			}
 			$nextlevel=$level+1;
-			getListComboboxMnuitems($id,$nextlevel, $childs, $siteid);
+			getListComboboxMnuitems($id,$nextlevel, $childs);
 		}
 	}
 	

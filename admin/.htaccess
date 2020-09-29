@@ -85,6 +85,13 @@ RewriteRule ^feedback/edit/([0-9]+)?$ 		index.php?com=feedback&viewtype=edit&id=
 RewriteRule ^feedback/active/([0-9]+)?$ 	index.php?com=feedback&viewtype=active&id=$1 [QSA]
 RewriteRule ^feedback/delete/([0-9]+)?$ 	index.php?com=feedback&viewtype=delete&id=$1 [QSA]
 
+#Request
+RewriteRule ^request/?$ 					index.php?com=request [QSA]
+RewriteRule ^request/add/?$ 				index.php?com=request&viewtype=add [QSA]
+RewriteRule ^request/edit/([0-9]+)?$ 		index.php?com=request&viewtype=edit&id=$1 [QSA]
+RewriteRule ^request/active/([0-9]+)?$ 		index.php?com=request&viewtype=active&id=$1 [QSA]
+RewriteRule ^request/delete/([0-9]+)?$ 		index.php?com=request&viewtype=delete&id=$1 [QSA]
+
 # Page
 RewriteRule ^pages/?$ 							index.php?com=pages 	[QSA]
 RewriteRule ^pages/list?$ 						index.php?com=pages&task=list

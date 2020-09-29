@@ -10,6 +10,9 @@ $title =''; $desc=''; $key='';$email_contact=''; $nickyahoo=''; $nameyahoo='';
 $footer=''; $contact=''; $banner=''; $gallery=''; $logo='';
 
 if(isset($_POST['web_title']) && $_POST['web_title']!='') {
+	var_dump($_POST);
+	exit();
+
 	$CompanyName 	= isset($_POST['company_name']) ? addslashes($_POST['company_name']) : '';
 	$Title 			= isset($_POST['web_title']) ? addslashes($_POST['web_title']) : '';
 	$Meta_descript 	= isset($_POST['web_desc']) ? addslashes($_POST['web_desc']) : '';
@@ -24,11 +27,17 @@ if(isset($_POST['web_title']) && $_POST['web_title']!='') {
 	$Facebook 		= isset($_POST['txtfacebook']) ? addslashes($_POST['txtfacebook']) : '';
 	$Youtube 		= isset($_POST['txtyoutube']) ? addslashes($_POST['txtyoutube']) : '';
 	$Work_time 		= isset($_POST['txt_work_time']) ? addslashes($_POST['txt_work_time']) : '';
+
+
 	// $Notification	= isset($_POST['time_notification']) ? (int)$_POST['time_notification'] : '';
 	$Gg_analytic	= isset($_POST['gg_analytic']) ? htmlspecialchars($_POST['gg_analytic']) : '';
 	$Script_header	= isset($_POST['script_header']) ? htmlspecialchars($_POST['script_header']) : '';
 	$Script_footer	= isset($_POST['script_footer']) ? htmlspecialchars($_POST['script_footer']) : '';
 	$Images 		= isset($_POST['txt_thumb2']) ? addslashes($_POST['txt_thumb2']) : '';
+
+
+
+	
 
 	if(isset($_FILES['txt_thumb']) && $_FILES['txt_thumb']['size'] > 0){
 		$save_path 	= "../images/";
@@ -91,6 +100,14 @@ if($objmysql->Num_rows()<=0) {
 	$script_footer  = json_decode(addslashes($row['script_footer']));
 }
 unset($objmysql);
+
+// <script>(function(d, s, id) {
+// var js, fjs = d.getElementsByTagName(s)[0];
+// if (d.getElementById(id)) return;
+// js = d.createElement(s); js.id = id;
+// js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+// fjs.parentNode.insertBefore(js, fjs);
+// }(document, 'script', 'facebook-jssdk'));</script>
 ?>
 <!-- Content Header (Page header) -->
 <div class="content-header">

@@ -17,10 +17,17 @@ if(isset($_POST['cmdsave_tab1']) && $_POST['txt_name']!='') {
 
     $result = SysAdd('tbl_page', $arr);
     if($result){
+        $arr2=array();
+        $arr2['title'] = $arr['title'];
+        $arr2['link'] = ROOTHOST_WEB.$arr['alias'].'-p'.$result;
+        $arr2['meta_title'] = $arr['title'];
+        $arr2['meta_key'] = $arr['title'];
+        $arr2['meta_desc'] = $arr['sapo'];
+        SysAdd('tbl_seo', $arr2);
+
         $_SESSION['flash'.'com_'.COMS] = 1;
-    }else{
-        $_SESSION['flash'.'com_'.COMS] = 0;
     }
+    else $_SESSION['flash'.'com_'.COMS] = 0;
 }
 ?>
 <!-- Content Header (Page header) -->

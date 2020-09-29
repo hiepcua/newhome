@@ -10,6 +10,9 @@ RewriteRule ^tim-kiem/?$ 					index.php?com=search [QSA]
 RewriteRule ^su-kien-([0-9a-zA-Z\-]+)-([0-9]+)/?$      	index.php?com=event&viewtype=detail&code=$1&id=$2 [QSA]
 RewriteRule ^su-kien-([0-9a-zA-Z\-]+)/?$            	index.php?com=event&viewtype=block&code=$1 [QSA]
 
+#Page
+RewriteRule ^([0-9a-zA-Z\-]+)-p([0-9]+)/?$          index.php?com=contents&viewtype=page&id=$1 [QSA]
+
 # Contents
 RewriteRule ^tin-tuc/?$ 							index.php?com=contents
 RewriteRule ^video/?$ 								index.php?com=contents&viewtype=video [QSA]

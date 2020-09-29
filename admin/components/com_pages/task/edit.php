@@ -1,11 +1,12 @@
 <?php
 defined("ISHOME") or die("Can't acess this page, please come back!");
-$id = isset($_GET['id']) ? (int)$_GET["id"] : 0;
+$GetID = isset($_GET['id']) ? (int)$_GET["id"] : 0;
 
 if(isset($_POST['cmdsave_tab1']) && $_POST['txt_name']!='') {
     $Title          = isset($_POST['txt_name']) ? addslashes($_POST['txt_name']) : '';
     $Intro          = isset($_POST['txt_intro']) ? addslashes($_POST['txt_intro']) : '';
     $FullText       = isset($_POST['txt_fulltext']) ? addslashes($_POST['txt_fulltext']) : '';
+    $seo_link       = isset($_POST['txt_seo_link']) ? addslashes($_POST['txt_seo_link']) : '';
 
     $arr=array();
     $arr['title'] = $Title;
@@ -14,17 +15,34 @@ if(isset($_POST['cmdsave_tab1']) && $_POST['txt_name']!='') {
     $arr['fulltext'] = $FullText;
     $arr['cdate'] = time();
 
-    $result = SysEdit('tbl_page', $arr, "id=".$id);
-    if($result){
-        $_SESSION['flash'.'com_'.COMS] = 1;
-    }else{
-        $_SESSION['flash'.'com_'.COMS] = 0;
-    }
+    $result = SysEdit('tbl_page', $arr, "id=".$GetID);
+
+    $arr2=array();
+    $arr2['title'] = $arr['title'];
+    $arr2['link'] = ROOTHOST_WEB.$arr['alias'].'-p'.$GetID;
+    $arr2['meta_title'] = $arr['title'];
+    $arr2['meta_key'] = $arr['title'];
+    $arr2['meta_desc'] = $arr['sapo'];
+
+    SysEdit('tbl_seo', $arr2, 'link="'.$seo_link.'"');
+
+    if($result) $_SESSION['flash'.'com_'.COMS] = 1;
+    else $_SESSION['flash'.'com_'.COMS] = 0;
 }
 
-$sql="SELECT * FROM tbl_page WHERE id = ".$id;
+$sql="SELECT * FROM tbl_page WHERE id = ".$GetID;
 $objmysql->Query($sql);
 $row = $objmysql->Fetch_Assoc();
+
+$seo_link = ROOTHOST_WEB.$row['alias'].'-p'.$row['id'];
+$res_seos = SysGetList('tbl_seo', [], "AND `link`='".$seo_link."'");
+$meta_title = $meta_key = $meta_desc = '';
+if(count($res_seos)){
+    $res_seo = $res_seos[0];
+    $meta_title = $res_seo['meta_title'];
+    $meta_key = $res_seo['meta_key'];
+    $meta_desc = $res_seo['meta_desc'];
+}
 ?>
 
 <!-- Content Header (Page header) -->
@@ -62,6 +80,7 @@ $row = $objmysql->Fetch_Assoc();
         ?>
 
         <form id="frm_action" class="form-horizontal" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="txt_seo_link" value="<?php echo $seo_link;?>">
             <div class="form-group">
                 <label>Tiêu đề<small class="cred"> (*)</small><span id="err_name" class="mes-error"></span></label>
                 <input type="text" name="txt_name" class="form-control" id="txt_name" value="<?php echo $row['title'];?>" placeholder="Tiêu đề trang" required>

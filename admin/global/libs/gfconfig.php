@@ -105,7 +105,8 @@ define('CONTENT_PERMISSION', $_CONTENT_PERMISSION);
 $_MENU_VIEW_TYPES = array(
 	'link'		=> 'Link',
 	'block'		=> 'Nhóm tin',
-	'article'	=> 'Bài viết'
+	'article'	=> 'Bài viết',
+	'page'		=> 'Trang tĩnh'
 );
 define('MENU_VIEW_TYPES', $_MENU_VIEW_TYPES);
 

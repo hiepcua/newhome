@@ -53,7 +53,7 @@ if(isset($_POST['txtCurnpage'])){
     $_SESSION['CUR_PAGE_'.OBJ_PAGE] = (int)$_POST['txtCurnpage'];
 }
 
-$total_rows=SysCount('tbl_seo', $strwhere);
+$total_rows=SysCount('tbl_page', $strwhere);
 $max_rows = 20;
 
 if($_SESSION['CUR_PAGE_'.OBJ_PAGE] > ceil($total_rows/$max_rows)){
