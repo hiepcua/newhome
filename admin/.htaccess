@@ -50,12 +50,13 @@ RewriteRule ^categories/edit/([0-9]+)?$ 	index.php?com=categories&viewtype=edit&
 RewriteRule ^categories/active/([0-9]+)?$ 	index.php?com=categories&viewtype=active&id=$1 [QSA]
 RewriteRule ^categories/delete/([0-9]+)?$ 	index.php?com=categories&viewtype=delete&id=$1 [QSA]
 
-RewriteRule ^album/?$ 						index.php?com=album [QSA]
-RewriteRule ^album/add/?$ 					index.php?com=album&viewtype=add
-RewriteRule ^album/edit/([0-9]+)?$ 			index.php?com=album&viewtype=edit&id=$1 [QSA]
-RewriteRule ^album/active/([0-9]+)?$ 		index.php?com=album&viewtype=active&id=$1 [QSA]
-RewriteRule ^album/ishot/([0-9]+)?$ 		index.php?com=album&viewtype=ishot&id=$1 [QSA]
-RewriteRule ^album/delete/([0-9]+)?$ 		index.php?com=album&viewtype=delete&id=$1 [QSA]
+RewriteRule ^album/?$ 								index.php?com=album [QSA]
+RewriteRule ^album/add/?$ 							index.php?com=album&viewtype=add
+RewriteRule ^album/edit/([0-9]+)?$ 					index.php?com=album&viewtype=edit&id=$1 [QSA]
+RewriteRule ^album/active/([0-9]+)?$ 				index.php?com=album&viewtype=active&id=$1 [QSA]
+RewriteRule ^album/ishot/([0-9]+)?$ 				index.php?com=album&viewtype=ishot&id=$1 [QSA]
+RewriteRule ^album/delete/([0-9]+)?$ 				index.php?com=album&viewtype=delete&id=$1 [QSA]
+RewriteRule ^album/([0-9a-zA-Z\-]+)-([0-9]+)?$ 		index.php?com=album&viewtype=list_images&id=$2 [QSA]
 
 # Module
 RewriteRule ^module/?$ 								index.php?com=module 	[QSA]
@@ -99,6 +100,14 @@ RewriteRule ^pages/add?$ 						index.php?com=pages&task=add
 RewriteRule ^pages/edit/([0-9]+)?$ 				index.php?com=pages&task=edit&id=$1
 RewriteRule ^pages/active/([0-9]+)?$ 			index.php?com=pages&task=active&id=$1
 RewriteRule ^pages/delete/([0-9]+)?$ 			index.php?com=pages&task=delete&id=$1
+
+# Gallery
+RewriteRule ^gallery/?$ 							index.php?com=gallery 	[QSA]
+RewriteRule ^gallery/add?$ 							index.php?com=gallery&task=add
+RewriteRule ^gallery/edit/([0-9]+)?$ 				index.php?com=gallery&task=edit&id=$1
+RewriteRule ^gallery/delete/([0-9]+)?$ 				index.php?com=gallery&task=delete&id=$1
+RewriteRule ^gallery/active/([0-9]+)?$ 				index.php?com=gallery&task=active&id=$1
+RewriteRule ^gallery/add_gallery/([0-9]+)?$ 		index.php?com=gallery&task=add_gallery&id=$1
 
 php_flag display_errors  on
 php_value upload_max_filesize 1024M

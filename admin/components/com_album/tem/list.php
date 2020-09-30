@@ -66,15 +66,16 @@ if($isAdmin==1){
 			</div>
 			<div class="card">
 				<div class='table-responsive'>
-					<table class="table">
+					<table class="table table-bordered">
 						<thead>                  
 							<tr>
 								<th style="width: 10px">#</th>
 								<th>Xóa</th>
 								<th>Tên</th>
 								<th>Mô tả</th>
+								<th style="text-align: center;" width="150">Danh sách ảnh</th>
 								<th style="text-align: center;" width="80">Hiển thị</th>
-								<th style="text-align: center;" width="80">Chi tiết</th>
+								<th style="text-align: center;" width="80">Sửa</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -101,6 +102,9 @@ if($isAdmin==1){
 
 									echo "<td>".$title."</td>";
 									echo "<td>".$intro."</td>";
+
+									echo "<td align='center'>";
+									echo "<a href='".ROOTHOST.COMS."/".$rows['code']."-".$ids."'><i class='fa fa-list-ul' aria-hidden='true'></i></a></td>";
 
 									echo "<td align='center'>";
 									echo "<a href='".ROOTHOST.COMS."/active/".$ids."'>";
