@@ -45,7 +45,7 @@ $row = $res_albums[0];
 				<ol class="breadcrumb float-sm-right">
 					<li class="breadcrumb-item"><a href="<?php echo ROOTHOST;?>">Bảng điều khiển</a></li>
 					<li class="breadcrumb-item"><a href="<?php echo ROOTHOST.'album';?>">Danh sách album</a></li>
-					<li class="breadcrumb-item active"><?php echo $row['title'];?></li>
+					<li class="breadcrumb-item active">Danh sách ảnh <?php echo $row['title'];?></li>
 				</ol>
 			</div><!-- /.col -->
 		</div><!-- /.row -->
@@ -65,24 +65,150 @@ $row = $res_albums[0];
 					</div>
 					<div class="col-sm-7"></div>
 					<div class="col-sm-2">
-						<a href="<?php echo ROOTHOST.COMS;?>/add" class="btn btn-primary float-sm-right"><i class="fa fa-upload" aria-hidden="true"></i> Upload ảnh</a>
+						<span class="btn btn-upload_images btn-primary float-sm-right">
+							<i class="fa fa-upload" aria-hidden="true"></i>Upload ảnh
+							<input type="file" id="upload_images" name="upload_images" multiple accept="image/x-png,image/gif,image/jpeg">
+						</span>
 					</div>
 				</div>
 			</form>
 		</div>
 		<div class="card">
-			<div class=""></div>
+			<div class="gallery-images">
+				<div class="grid">
+					<div class="w-14">
+						<div class="wr-item">
+							<div class="wrap-img">
+								<img src="http://localhost/newhome/medias/albums/222.jpg" class="img">
+							</div>
+							<div class="wr-tool">
+								<span class="bt bt-select"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+								<span class="bt bt-edit"><i class="fas fa-edit"></i></span>
+								<span class="bt bt-dropdown"><i class="fa fa-times" aria-hidden="true"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="w-14">
+						<div class="wr-item">
+							<div class="wrap-img">
+								<img src="http://localhost/newhome/medias/albums/222.jpg" class="img">
+							</div>
+							<div class="wr-tool">
+								<span class="bt bt-select"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+								<span class="bt bt-edit"><i class="fas fa-edit"></i></span>
+								<span class="bt bt-dropdown"><i class="fa fa-times" aria-hidden="true"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="w-14">
+						<div class="wr-item">
+							<div class="wrap-img">
+								<img src="http://localhost/newhome/medias/albums/222.jpg" class="img">
+							</div>
+							<div class="wr-tool">
+								<span class="bt bt-select"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+								<span class="bt bt-edit"><i class="fas fa-edit"></i></span>
+								<span class="bt bt-dropdown"><i class="fa fa-times" aria-hidden="true"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="w-14">
+						<div class="wr-item">
+							<div class="wrap-img">
+								<img src="http://localhost/newhome/medias/albums/222.jpg" class="img">
+							</div>
+							<div class="wr-tool">
+								<span class="bt bt-select"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+								<span class="bt bt-edit"><i class="fas fa-edit"></i></span>
+								<span class="bt bt-dropdown"><i class="fa fa-times" aria-hidden="true"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="w-14">
+						<div class="wr-item">
+							<div class="wrap-img">
+								<img src="http://localhost/newhome/medias/albums/222.jpg" class="img">
+							</div>
+							<div class="wr-tool">
+								<span class="bt bt-select"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+								<span class="bt bt-edit"><i class="fas fa-edit"></i></span>
+								<span class="bt bt-dropdown"><i class="fa fa-times" aria-hidden="true"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="w-14">
+						<div class="wr-item">
+							<div class="wrap-img">
+								<img src="http://localhost/newhome/medias/albums/222.jpg" class="img">
+							</div>
+							<div class="wr-tool">
+								<span class="bt bt-select"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+								<span class="bt bt-edit"><i class="fas fa-edit"></i></span>
+								<span class="bt bt-dropdown"><i class="fa fa-times" aria-hidden="true"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="w-14">
+						<div class="wr-item">
+							<div class="wrap-img">
+								<img src="http://localhost/newhome/medias/albums/222.jpg" class="img">
+							</div>
+							<div class="wr-tool">
+								<span class="bt bt-select"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+								<span class="bt bt-edit"><i class="fas fa-edit"></i></span>
+								<span class="bt bt-dropdown"><i class="fa fa-times" aria-hidden="true"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="w-14">
+						<div class="wr-item">
+							<div class="wrap-img">
+								<img src="http://localhost/newhome/medias/albums/222.jpg" class="img">
+							</div>
+							<div class="wr-tool">
+								<span class="bt bt-select"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+								<span class="bt bt-edit"><i class="fas fa-edit"></i></span>
+								<span class="bt bt-dropdown"><i class="fa fa-times" aria-hidden="true"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="w-14">
+						<div class="wr-item">
+							<div class="wrap-img">
+								<img src="http://localhost/newhome/medias/albums/222.jpg" class="img">
+							</div>
+							<div class="wr-tool">
+								<span class="bt bt-select"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+								<span class="bt bt-edit"><i class="fas fa-edit"></i></span>
+								<span class="bt bt-dropdown"><i class="fa fa-times" aria-hidden="true"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="w-14">
+						<div class="wr-item">
+							<div class="wrap-img">
+								<img src="http://localhost/newhome/medias/albums/222.jpg" class="img">
+							</div>
+							<div class="wr-tool">
+								<span class="bt bt-select"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+								<span class="bt bt-edit"><i class="fas fa-edit"></i></span>
+								<span class="bt bt-dropdown"><i class="fa fa-times" aria-hidden="true"></i></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<nav class="d-flex justify-content-center">
-			<?php 
-			paging($total_rows,$max_rows,$cur_page);
-			?>
-		</nav>
+		<nav class="d-flex justify-content-center"><?php paging($total_rows,$max_rows,$cur_page);?></nav>
 	</div>
 </section>
 <script type="text/javascript">
 	$(document).ready(function(){
 		// Hidden left sidebar
 		$('#body').addClass('sidebar-collapse');
+
+		$('.gallery-images .bt').on('click', function(){
+			
+		});
 	})
 </script>

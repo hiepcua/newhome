@@ -5,11 +5,15 @@ $isAdmin=getInfo('isadmin');
 if($isAdmin==1){
 	$strWhere="";
 	$get_q = isset($_GET['q']) ? antiData($_GET['q']) : '';
+	$action = isset($_GET['cbo_action']) ? addslashes(trim($_GET['cbo_action'])) : '';
 
 	/*Gán strWhere*/
 	if($get_q!=''){
 		$flg_search = 1;
 		$strWhere.=" AND title LIKE '%".$get_q."%'";
+	}
+	if($action !== '' && $action !== 'all' ){
+	    $strWhere.=" AND `isactive` = '$action'";
 	}
 
 	/*Begin pagging*/
@@ -49,21 +53,38 @@ if($isAdmin==1){
 	<!-- Main content -->
 	<section class="content">
 		<div class='container-fluid'>
-			<div class="widget-frm-search">
-				<form id='frm_search' method='get' action=''>
-					<div class='row'>
-						<div class='col-sm-3'>
-							<div class='form-group'>
-								<input type='text' id='txt_title' name='q' value="<?php echo $get_q;?>" class='form-control' placeholder="Tên..." />
-							</div>
+			<div class="row widget-frm-search form-group">
+				<div class="col-md-6">
+					<form id="frm_search" method="get" action="<?php echo ROOTHOST.COMS;?>">
+						<div class="frm-search-box form-inline pull-left">
+							<input class="form-control" type="text" value="<?php echo $get_q?>" name="q" id="txtkeyword" placeholder="Từ khóa"/>
+							&nbsp&nbsp&nbsp
+							<select name="cbo_action" class="form-control" id="cbo_action">
+								<option value="all">Tất cả</option>
+								<option value="1">Hiển thị</option>
+								<option value="0">Ẩn</option>
+								<script language="javascript">
+									$(document).ready(function(){
+										cbo_Selected('cbo_action','<?php echo $action;?>');
+									});
+								</script>
+							</select>
+							&nbsp&nbsp&nbsp
+							<button type="submit" id="_btnSearch" class="btn btn-primary">Tìm kiếm</button>
 						</div>
-						<div class="col-sm-7"></div>
-						<div class="col-sm-2">
-							<a href="<?php echo ROOTHOST.COMS;?>/add" class="btn btn-primary float-sm-right"><i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm mới</a>
-						</div>
+					</form>
+				</div>
+				<div class="col-md-6">
+					<div class="pull-right">
+						<form id="frm_actions" method="post" action="">
+							<input type="hidden" name="txtaction" id="txtaction"/>
+							<input type="hidden" name="txtids" id="txtids" />
+						</form>
+						<a href="<?php echo ROOTHOST.COMS;?>/add" class="btn btn-primary float-sm-right"><i class="fa fa-plus-circle" aria-hidden="true"></i> Thêm mới</a>
 					</div>
-				</form>
+				</div>
 			</div>
+
 			<div class="card">
 				<div class='table-responsive'>
 					<table class="table table-bordered">

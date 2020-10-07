@@ -8,29 +8,35 @@ $file='';
 if(isset($_POST['cmdsave_tab1']) && $_POST['txt_name']!='') {
 	$Title 			= isset($_POST['txt_name']) ? addslashes($_POST['txt_name']) : '';
 	$Intro 			= isset($_POST['txt_intro']) ? addslashes($_POST['txt_intro']) : '';
-	$Meta_title 	= isset($_POST['meta_title']) ? addslashes($_POST['meta_title']) : '';
+	$Meta_keys 		= isset($_POST['meta_keys']) ? addslashes($_POST['meta_keys']) : '';
 	$Meta_desc 		= isset($_POST['meta_desc']) ? addslashes($_POST['meta_desc']) : '';
 
 	if(isset($_FILES['txt_thumb']) && $_FILES['txt_thumb']['size'] > 0){
-		$save_path 	= "medias/albums/";
-		$obj_upload->setPath($save_path);
-		$file = $save_path.$obj_upload->UploadFile("txt_thumb", $save_path);
-	}
+        $save_path  = "../medias/albums/";
+        $obj_upload->setPath($save_path);
+        $file = ROOTHOST_WEB.'medias/albums/'.$obj_upload->UploadFile("txt_thumb", $save_path);
+    }
 
 	$arr=array();
 	$arr['title'] = $Title;
 	$arr['code'] = un_unicode($Title);
 	$arr['intro'] = $Intro;
-	$arr['meta_title'] = $Meta_title;
-	$arr['meta_desc'] = $Meta_desc;
 	$arr['image'] = $file;
 
 	$result = SysAdd('tbl_album', $arr);
 	if($result){
+		$arr2=array();
+		$arr2['title'] = $arr['title'];
+		$arr2['link'] = ROOTHOST_WEB.'album/'.$arr['code'].'-'.$result;
+		$arr2['image'] = $file;
+		$arr2['meta_title'] = $arr['title'];
+		$arr2['meta_key'] = $Meta_keys;
+		$arr2['meta_desc'] = $Meta_desc;
+		SysAdd('tbl_seo', $arr2);
+
 		$_SESSION['flash'.'com_'.COMS] = 1;
-	}else{
-		$_SESSION['flash'.'com_'.COMS] = 0;
 	}
+	else $_SESSION['flash'.'com_'.COMS] = 0;
 }
 ?>
 <!-- Content Header (Page header) -->
@@ -57,7 +63,7 @@ if(isset($_POST['cmdsave_tab1']) && $_POST['txt_name']!='') {
 		<?php
 		if (isset($_SESSION['flash'.'com_'.COMS])) {
 			if($_SESSION['flash'.'com_'.COMS] == 1){
-				$msg->success('Cập nhật thành công.');
+				$msg->success('Thêm mới thành công.');
 				echo $msg->display();
 			}else if($_SESSION['flash'.'com_'.COMS] == 0){
 				$msg->error('Có lỗi trong quá trình thêm mới.');
@@ -69,38 +75,49 @@ if(isset($_POST['cmdsave_tab1']) && $_POST['txt_name']!='') {
 		<div id='action'>
 			<div class="card">
 				<form name="frm_action" id="frm_action" action="" method="post" enctype="multipart/form-data">
-					<div class="mess"></div>
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-9">
 							<div class="form-group">
-								<label>Tên<font color="red">*</font></label>
-								<input type="text" id="txt_name" name="txt_name" class="form-control" value="" placeholder="Tên album">
+								<label>Tiêu đề<small class="cred"> (*)</small><span id="err_name" class="mes-error"></span></label>
+								<input type="text" id="txt_name" name="txt_name" class="form-control" placeholder="Tiêu đề album">
+							</div>
+
+							<div class="form-group">
+								<label>Mô tả</label>
+								<textarea class="form-control" name="txt_intro" placeholder="Mô tả về chuyên mục..." rows="2"></textarea>
+							</div>
+
+							<div class="form-group">
+								<label>Meta Keys</label>
+								<textarea class="form-control" name="meta_keys" rows="2"></textarea>
+							</div>
+
+							<div class="form-group">
+								<label>Meta Description</label>
+								<textarea class="form-control" name="meta_desc" placeholder="Mô tả về chuyên mục..." rows="2"></textarea>
 							</div>
 						</div>
-
-						<div class="col-md-6">
+						<div class="col-md-3">
 							<div class='form-group'>
-								<label>Ảnh</label><small> (Dung lượng < 10MB)</small>
-								<div id="response_img">
-									<input type="file" name="txt_thumb" accept="image/jpg, image/jpeg">
+								<div class="widget-fileupload fileupload fileupload-new" data-provides="fileupload">
+									<label>Ảnh đại diện</label><small> (Dung lượng < 10MB)</small>
+									<div class="widget-avatar mb-2">
+										<div class="fileupload-new thumbnail">
+											<img src="<?php echo ROOTHOST;?>global/img/no-photo.jpg" id="img_image_preview">
+										</div>
+										<div class="fileupload-preview fileupload-exists thumbnail" style="line-height: 20px;"></div>
+									</div>
+									<div class="control">
+										<span class="btn btn-file">
+											<span class="fileupload-new">Tải lên</span>
+											<span class="fileupload-exists">Thay đổi</span>
+											<input type="file" id="file_image" name="txt_thumb" accept="image/jpg, image/jpeg">
+										</span>
+										<a href="javascript:void(0)" class="btn fileupload-exists" data-dismiss="fileupload" onclick="cancel_fileupload()">Hủy</a>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-
-					<div class="form-group">
-						<label>Mô tả</label>
-						<textarea class="form-control" name="txt_intro" placeholder="Mô tả về sự kiện..." rows="2"></textarea>
-					</div>
-
-					<div class="form-group">
-						<label>Meta title</label>
-						<textarea class="form-control" name="meta_title" placeholder="Meta title..." rows="2"></textarea>
-					</div>
-
-					<div class="form-group">
-						<label>Meta description</label>
-						<textarea class="form-control" name="meta_desc" placeholder="Meta description..." rows="3"></textarea>
 					</div>
 					
 					<div class="text-center toolbar">
@@ -130,4 +147,32 @@ if(isset($_POST['cmdsave_tab1']) && $_POST['txt_name']!='') {
 		}
 		return flag;
 	}
+
+	function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                var img = document.createElement("img");
+                img.src = e.target.result;
+                // Hidden fileupload new
+                $('.fileupload').removeClass('fileupload-new');
+                $('.fileupload').addClass('fileupload-exists');
+                $('.fileupload-preview').html(img);
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#file_image").on('change', function(){
+        readURL(this);
+    });
+
+    function cancel_fileupload(){
+        $('.fileupload').removeClass('fileupload-exists');
+        $('.fileupload').addClass('fileupload-new');
+        $('.fileupload-preview').empty();
+        $("#file_image").val('');
+    }
 </script>
